@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
   mealContainer: {
     flex: 1,
     borderColor: '#d8d5d5',
+
     borderWidth: 5,
     borderRadius: 15,
     overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
@@ -104,6 +105,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 14,
     margin: 8,
-    color: 'white',
+    color: '#fe4a01',
   },
 })

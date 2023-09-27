@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
@@ -39,7 +39,7 @@ export default function App() {
             name="MealDetail"
             component={MealDetailScreen}
             options={{
-              title: 'Meal OverView',
+              title: 'Meal Details',
             }}
           />
         </Stack.Navigator>
