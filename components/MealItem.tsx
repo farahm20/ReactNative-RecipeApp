@@ -1,3 +1,5 @@
+// MealItem.tsx
+import React from 'react'
 import {
   View,
   Text,
@@ -6,23 +8,34 @@ import {
   Pressable,
   Platform,
 } from 'react-native'
-
 import { useNavigation } from '@react-navigation/native'
 import MealSpecifications from './MealSpecifications'
-const MealItem = ({
+
+interface MealItemProps {
+  id: string
+  title: string
+  imageUrl: string
+  duration: number
+  complexity: string
+  affordability: string
+  mealId: string
+}
+
+const MealItem: React.FC<MealItemProps> = ({
   id,
   title,
   imageUrl,
   duration,
   complexity,
   affordability,
-  mealButtonPressed,
+  mealId,
 }) => {
   const navigation = useNavigation()
 
   console.log(id, title)
+
   function mealButtonPressed() {
-    navigation.navigate('MealDetail', { mealId: id })
+    navigation.navigate('MealDetail', { mealId: mealId })
   }
 
   return (
@@ -33,7 +46,7 @@ const MealItem = ({
           style={({ pressed }) => (pressed ? styles.buttonPressed : null)}
           onPress={mealButtonPressed}
         >
-          <View style={styles.imageContainer}>
+          <View style={styles.image}>
             <Image
               style={styles.image}
               source={{
@@ -55,13 +68,10 @@ const MealItem = ({
   )
 }
 
-export default MealItem
-
 const styles = StyleSheet.create({
   mealContainer: {
     flex: 1,
     borderColor: '#d8d5d5',
-
     borderWidth: 5,
     borderRadius: 15,
     overflow: Platform.OS === 'android' ? 'hidden' : 'visible',
@@ -96,15 +106,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  specificationContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  detailsText: {
-    fontWeight: '700',
-    textAlign: 'center',
-    fontSize: 14,
-    margin: 8,
-    color: '#fe4a01',
-  },
 })
+
+export default MealItem

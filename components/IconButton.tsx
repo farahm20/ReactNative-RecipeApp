@@ -3,13 +3,12 @@ import { Pressable, StyleSheet } from 'react-native'
 import React from 'react'
 
 interface IconButtonProps {
-  icon: string
+  icon: keyof typeof Ionicons.glyphMap
   color: string
   onPress: () => void
 }
 
 const IconButton: React.FC<IconButtonProps> = ({ icon, color, onPress }) => {
-  console.log('In the ts file: ', icon, color, onPress)
   return (
     <Pressable
       onPress={onPress}

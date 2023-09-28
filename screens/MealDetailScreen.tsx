@@ -5,9 +5,16 @@ import List from '../components/MealSpecs/List'
 import Subtitle from '../components/MealSpecs/Subtitle'
 import { useLayoutEffect } from 'react'
 import IconButton from '../components/IconButton'
+import { useNavigation, RouteProp } from '@react-navigation/native'
+import { RootStackParamList } from '../types/RootStackParamList'
 
-const MealDetailScreen = ({ route, navigation }) => {
-  const mealId = route.params.mealId
+type MealDetailScreenRouteProp = RouteProp<RootStackParamList, 'MealDetail'>
+
+const MealDetailScreen: React.FC<{
+  route: MealDetailScreenRouteProp
+  navigation: any
+}> = ({ route, navigation }) => {
+  const mealId = route.params?.mealId
   const selectedMeal = MEALS.find((meal) => meal.id === mealId)
 
   function headerButtonPressHandler() {
@@ -30,21 +37,21 @@ const MealDetailScreen = ({ route, navigation }) => {
   return (
     <ScrollView style={styles.rootContainer}>
       <View style={styles.imageContainer}>
-        <Image style={styles.image} source={{ uri: selectedMeal.imageUrl }} />
-        <Text style={styles.title}>{selectedMeal.title}</Text>
+        <Image style={styles.image} source={{ uri: selectedMeal?.imageUrl }} />
+        <Text style={styles.title}>{selectedMeal?.title}</Text>
         <MealSpecifications
-          duration={selectedMeal.duration}
-          complexity={selectedMeal.complexity}
-          affordability={selectedMeal.affordability}
+          duration={selectedMeal?.duration}
+          complexity={selectedMeal?.complexity}
+          affordability={selectedMeal?.affordability}
           textStyle={styles.detailText}
         />
       </View>
       <View style={styles.listOuterContainer}>
         <View style={styles.listContainer}>
           <Subtitle>Ingredients</Subtitle>
-          <List data={selectedMeal.ingredients} />
+          <List data={selectedMeal?.ingredients || []} />
           <Subtitle>Steps</Subtitle>
-          <List data={selectedMeal.steps} />
+          <List data={selectedMeal?.steps || []} />
         </View>
       </View>
     </ScrollView>
@@ -57,7 +64,7 @@ const styles = StyleSheet.create({
     marginBottom: 32,
   },
   imageContainer: {
-    backgroundColor: '#fe4a01',
+    backgroundColor: '#d6604d',
     padding: 10,
     margin: 10,
     borderRadius: 18,

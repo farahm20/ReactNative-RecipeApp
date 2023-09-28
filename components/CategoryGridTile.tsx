@@ -1,6 +1,17 @@
+import React from 'react'
 import { Pressable, View, Text, StyleSheet, Platform } from 'react-native'
 
-function CategoryGridTile({ title, color, whenPressed }) {
+interface CategoryGridProps {
+  title: string
+  color: string
+  whenPressed: () => void
+}
+
+const CategoryGridTile: React.FC<CategoryGridProps> = ({
+  title,
+  color,
+  whenPressed,
+}) => {
   return (
     <View style={styles.gridContainer}>
       <Pressable

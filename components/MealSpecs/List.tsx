@@ -1,11 +1,20 @@
+import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-function List({ data }) {
-  return data.map((dataPoint) => (
-    <View key={dataPoint} style={styles.listItem}>
-      <Text style={styles.itemText}>{dataPoint}</Text>
-    </View>
-  ))
+interface ListProps {
+  data: string[] // Change the type to match your data type
+}
+
+function List({ data }: ListProps) {
+  return (
+    <>
+      {data.map((dataPoint) => (
+        <View key={dataPoint} style={styles.listItem}>
+          <Text style={styles.itemText}>{dataPoint}</Text>
+        </View>
+      ))}
+    </>
+  )
 }
 
 export default List

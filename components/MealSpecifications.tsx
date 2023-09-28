@@ -1,14 +1,28 @@
-import { View, Text, StyleSheet } from 'react-native'
-const MealSpecifications = ({
+import { View, Text, StyleSheet, ViewStyle } from 'react-native'
+import React from 'react'
+
+interface MealSpecificationsProps {
+  duration: number
+  complexity: string
+  affordability: string
+  textStyle?: object
+  style?: (style: ViewStyle) => ViewStyle
+}
+
+const MealSpecifications: React.FC<MealSpecificationsProps> = ({
   duration,
   complexity,
   affordability,
   style,
   textStyle,
 }) => {
+  const containerStyle = style
+    ? style(styles.specificationContainer)
+    : styles.specificationContainer
+
   return (
     <View>
-      <View style={[styles.specificationContainer, style]}>
+      <View style={[containerStyle]}>
         <Text style={[styles.detailsText, textStyle]}>{duration}mins</Text>
         <Text style={[styles.detailsText, textStyle]}>{complexity}</Text>
         <Text style={[styles.detailsText, textStyle]}>{affordability}</Text>

@@ -1,17 +1,19 @@
-import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text } from 'react-native'
+import React from 'react'
+import { StatusBar, StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
 import CategoriesScreen from './screens/CategoriesScreen'
 import MealsOverviewScreen from './screens/MealsOverviewScreen'
 import MealDetailScreen from './screens/MealDetailScreen'
+import { RootStackParamList } from './types/RootStackParamList'
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator<RootStackParamList>()
+
 export default function App() {
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar />
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -32,7 +34,7 @@ export default function App() {
             name="MealsOverview"
             component={MealsOverviewScreen}
             options={{
-              title: 'Meals OverView',
+              title: 'Meals Overview',
             }}
           />
           <Stack.Screen

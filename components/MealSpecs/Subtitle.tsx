@@ -1,6 +1,11 @@
-import { View, Text, StyleSheet } from 'react-native'
+import React from 'react'
+import { View, Text, StyleSheet, ViewStyle, TextStyle } from 'react-native'
 
-function Subtitle({ children }) {
+interface SubtitleProps {
+  children: React.ReactNode
+}
+
+function Subtitle({ children }: SubtitleProps) {
   return (
     <View style={styles.subtitleContainer}>
       <Text style={styles.subtitle}>{children}</Text>
